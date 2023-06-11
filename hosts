@@ -1,0 +1,6 @@
+[containers]
+app[1:3]
+db[1:3]
+
+[containers:vars]
+ansible_connection = docker
