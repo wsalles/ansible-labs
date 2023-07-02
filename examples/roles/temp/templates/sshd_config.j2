@@ -1,0 +1,56 @@
+# Networking
+Protocol {{ ssh_protocol }}
+Port {{ ssh_port }}
+AddressFamily  inet
+ListenAddress  {{ ansible_default_ipv4.address }}
+Banner  /etc/ssh/banner_ssh
+Subsystem  sftp /usr/libexec/openssh/sftp-server
+UseDNS yes
+
+# Locale-related environment variables
+AcceptEnv  LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv  LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv  LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv  XMODIFIERS
+
+# Ciphers and keying
+HostKey  /etc/ssh/ssh_host_rsa_key
+HostKey  /etc/ssh/ssh_host_ecdsa_key
+HostKey  /etc/ssh/ssh_host_ed25519_key
+Ciphers  aes128-ctr,aes192-ctr,aes256-ctr
+
+# Logging
+SyslogFacility  AUTH
+SyslogFacility  AUTHPRIV
+LogLevel  INFO
+
+# Authentication
+PermitRootLogin no
+PubkeyAuthentication yes
+HostbasedAuthentication no
+StrictModes  yes
+LoginGraceTime  20
+MaxAuthTries  3
+MaxSessions  3
+ClientAliveInterval 180
+ClientAliveCountMax 3
+AuthorizedKeysFile .ssh/authorized_keys
+IgnoreRhosts  yes
+PermitUserEnvironment no
+AllowTcpForwarding no
+AllowAgentForwarding no
+GatewayPorts  no
+X11Forwarding  no
+TCPKeepAlive  yes
+PermitTunnel  no
+ChrootDirectory none
+AllowUsers {{ ssh_user }}
+
+# Block authentication user by password
+PasswordAuthentication no
+PermitEmptyPasswords no
+GSSAPIAuthentication no
+GSSAPICleanupCredentials no
+KerberosAuthentication no
+ChallengeResponseAuthentication yes
+UsePAM  yes

@@ -1,0 +1,20 @@
+[debian]
+debian01 ansible_host=192.168.1.101 zz=inventory_file
+
+[redhat]
+rocky01 ansible_host=192.168.1.100
+
+[windows]
+windows01 ansible_host=192.168.1.102
+
+[linux:children]
+redhat
+debian
+
+[debian:vars]
+http_port=8080
+a=6767
+
+[redhat:vars]
+squid_port=3128
+b=6868

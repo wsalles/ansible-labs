@@ -1,0 +1,7 @@
+---
+
+ssh_port: 22
+ssh_protocol: 2
+ssh_user: root
+
+...

@@ -1,0 +1,16 @@
+---
+
+- name: Ansible Loop
+  hosts: rocky01
+  tasks:
+    - name: DNF | Install packages
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - vim
+        - net-tools
+        - screen
+      loop_control:
+        pause: 5
+...
