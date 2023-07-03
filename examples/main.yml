@@ -1,0 +1,11 @@
+---
+
+- name: Main Playbook
+  hosts: all
+  roles:
+    # - temp
+    # - linux-update
+    # - nginx
+    # - mysql-restoredb
+
+...

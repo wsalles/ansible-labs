@@ -1,0 +1,12 @@
+---
+
+- name: Testando variaveis
+  hosts: rocky01
+  vars_files: /etc/ansible/playbooks/varsfiles.yml
+  tasks:
+    - name: DNF | Install packages
+      ansible.builtin.dnf:
+        name: "{{ packages }}"
+        state: latest
+
+...

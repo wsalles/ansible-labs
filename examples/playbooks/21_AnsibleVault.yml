@@ -1,0 +1,16 @@
+---
+
+- name: Ansible Prompt | Creating user
+  hosts: all
+  vars_files: /etc/ansible/playbooks/passwd.yml
+  tasks:
+    - name: USER | Add user
+      ansible.builtin.user:
+        name: "aline"
+        comment: "Feliz aniversario"
+        shell: "/bin/bash"
+        home: "/home/aline"
+        password: "{{ password }}"
+
+        
+...
