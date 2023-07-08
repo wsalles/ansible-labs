@@ -1,0 +1,32 @@
+---
+# tasks file for nginx
+- name: Adding Users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    state: present
+    groups: "root"
+    shell: "/bin/bash"
+  with_items:
+    - vault
+    - wsalles
+
+- name: Ubuntu/Debian | Installing packages
+  import_tasks: debian.yml
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+- name: NGINX | Starting Service
+  ansible.builtin.service:
+    name: nginx
+    enabled: yes
+    state: started
+
+- name: NGINX | Config
+  ansible.builtin.template:  
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+    mode: 0644
+  with_items:
+    "{{ nginx_config.templates }}"
+  notify: NGINX | Restarting
+
+...
