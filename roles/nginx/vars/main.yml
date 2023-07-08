@@ -1,0 +1,11 @@
+---
+# vars file for nginx
+nginx_config:
+  port: 80
+  root_path: /var/www/html
+  log_path: /var/log/nginx
+  templates:
+    - { src: nginx.conf.j2, dst: /etc/nginx/nginx.conf }
+    - { src: sites-available/default.j2, dst: /etc/nginx/sites-available/default }
+
+...

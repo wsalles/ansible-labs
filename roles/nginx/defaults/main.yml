@@ -1,0 +1,7 @@
+---
+# defaults file for nginx
+packages:
+  - netcat
+  - net-tools
+  - tcpdump
+  - nginx
