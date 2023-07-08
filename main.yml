@@ -1,0 +1,7 @@
+---
+- name: My NGINX
+  hosts: nginx
+  roles:
+    - nginx
+
+...
