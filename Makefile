@@ -3,7 +3,7 @@
 # Global variables -------------------------------------------------------
 SLEEP    := 3600
 REPLICAS := 3
-GROUPS   := app db
+GROUPS   := nginx db
 
 # Customizing your output ------------------------------------------------
 CODE_CHANGE   = "\\033["
